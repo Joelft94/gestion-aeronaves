@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Aircraft</title>
+</head>
+<body>
+    <h1>Add New Aircraft</h1>
+    <form action="{{ url_for('add_aircraft') }}" method="POST">
+        <label for="name">Aircraft Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <input type="submit" value="Add Aircraft">
+    </form>
+    <a href="{{ url_for('index') }}">Back to Aircraft List</a>
+</body>
+</html>

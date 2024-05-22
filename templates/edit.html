@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Airplane Status</title>
+</head>
+<body>
+    <h1>Edit Airplane Status</h1>
+    <form action="{{ url_for('edit_airplane_status', id=status.id) }}" method="POST">
+        <label for="pilot">Pilot:</label><br>
+        <input type="text" id="pilot" name="pilot" value="{{ status.pilot }}"><br>
+        <label for="copilot">Copilot:</label><br>
+        <input type="text" id="copilot" name="copilot" value="{{ status.copilot }}"><br>
+        <label for="departure_hour">Departure Hour:</label><br>
+        <input type="time" id="departure_hour" name="departure_hour" value="{{ status.departure_hour }}"><br>
+        <label for="arrival_hour">Arrival Hour:</label><br>
+        <input type="time" id="arrival_hour" name="arrival_hour" value="{{ status.arrival_hour }}"><br>
+        <label for="total_flown_hours">Total Flown Hours:</label><br>
+        <input type="number" step="0.1" id="total_flown_hours" name="total_flown_hours" value="{{ status.total_flown_hours }}"><br>
+        <label for="departure_place">Departure Place:</label><br>
+        <input type="text" id="departure_place" name="departure_place" value="{{ status.departure_place }}"><br>
+        <label for="flight_type">Flight Type:</label><br>
+        <input type="text" id="flight_type" name="flight_type" value="{{ status.flight_type }}"><br>
+        <label for="observation">Observation:</label><br>
+        <input type="text" id="observation" name="observation" value="{{ status.observation }}"><br>
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>

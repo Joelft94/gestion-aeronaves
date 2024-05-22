@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aircrafts</title>
+</head>
+<body>
+    <h1>Aircraft List</h1>
+    <ul>
+        {% for aircraft in aircrafts %}
+            <li>
+                <a href="{{ url_for('view_aircraft', aircraft_id=aircraft.id) }}">{{ aircraft.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_aircraft') }}">Add New Aircraft</a>
+</body>
+</html>

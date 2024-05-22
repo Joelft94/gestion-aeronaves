@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consult Airplane Status</title>
+</head>
+<body>
+    <h1>Consult Airplane Status</h1>
+    <table>
+        <tr>
+            <th>Pilot</th>
+            <th>Copilot</th>
+            <th>Departure Hour</th>
+            <th>Arrival Hour</th>
+            <th>Total Flown Hours</th>
+            <th>Departure Place</th>
+            <th>Flight Type</th>
+            <th>Observation</th>
+            <th>Aircraft</th>
+            <th>Actions</th>
+        </tr>
+        {% for status in statuses %}
+        <tr>
+            <td>{{ status.pilot }}</td>
+            <td>{{ status.copilot }}</td>
+            <td>{{ status.departure_hour }}</td>
+            <td>{{ status.arrival_hour }}</td>
+            <td>{{ status.total_flown_hours }}</td>
+            <td>{{ status.departure_place }}</td>
+            <td>{{ status.flight_type }}</td>
+            <td>{{ status.observation }}</td>
+            <td>{{ status.aircraft.name }}</td>
+            <td>
+                <a href="{{ url_for('edit_airplane_status', id=status.id) }}">
+                    <button>Edit</button>
+                </a>
+                <form action="{{ url_for('delete_airplane_status', id=status.id) }}" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Load Airplane Status</title>
+</head>
+<body>
+    <h1>Load Airplane Status</h1>
+    <form action="{{ url_for('create_airplane_status') }}" method="POST">
+        <label for="pilot">Pilot:</label><br>
+        <input type="text" id="pilot" name="pilot"><br>
+        <label for="copilot">Copilot:</label><br>
+        <input type="text" id="copilot" name="copilot"><br>
+        <label for="departure_hour">Departure Hour:</label><br>
+        <input type="time" id="departure_hour" name="departure_hour"><br>
+        <label for="arrival_hour">Arrival Hour:</label><br>
+        <input type="time" id="arrival_hour" name="arrival_hour"><br>
+        <label for="total_flown_hours">Total Flown Hours:</label><br>
+        <input type="number" step="0.1" id="total_flown_hours" name="total_flown_hours"><br>
+        <label for="departure_place">Departure Place:</label><br>
+        <input type="text" id="departure_place" name="departure_place"><br>
+        <label for="flight_type">Flight Type:</label><br>
+        <input type="text" id="flight_type" name="flight_type"><br>
+        <label for="observation">Observation:</label><br>
+        <input type="text" id="observation" name="observation"><br>
+        <label for="aircraft">Aircraft:</label><br>
+        <select id="aircraft" name="aircraft">
+            {% for aircraft in aircrafts %}
+                <option value="{{ aircraft.id }}">{{ aircraft.name }}</option>
+            {% endfor %}
+        </select><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
