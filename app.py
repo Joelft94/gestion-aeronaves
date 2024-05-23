@@ -97,7 +97,7 @@ class LoginForm(FlaskForm):
 
 
 # Index
-@app.route('/index')
+@app.route('/')
 @login_required
 def index():
     aircrafts = Aircraft.query.all()

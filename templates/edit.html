@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Edit Airplane Status</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Editar</title>
+    </head>
 <body>
     <h1>Edit Airplane Status</h1>
     <form action="{{ url_for('edit_airplane_status', id=status.id) }}" method="POST">
