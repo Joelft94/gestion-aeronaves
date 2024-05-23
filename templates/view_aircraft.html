@@ -1,84 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
     <title>{{ aircraft.name }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>{{ aircraft.name }}</h1>
-    <!-- Delete button for aircraft -->
-    <form id="delete-aircraft-form" action="{{ url_for('delete_aircraft', aircraft_id=aircraft.id)}}" method="POST">
-        <button type="button" onclick="confirmDelete()">Delete Aircraft</button>
-    </form>
-    <!-- Confirmation dialog for deleting aircraft -->
+<body class="bg-gray-100">
+    <div class="container mx-auto py-10">
+        <h1 class="text-3xl font-bold mb-4">{{ aircraft.name }}</h1>
+
+        
+        <!-- Add Flight form -->
+        <div class="bg-white shadow-md rounded-md p-8">
+            <h2 class="text-lg font-semibold mb-4">Add Flight</h2>
+            <form id="flight-form" action="{{ url_for('add_flight', aircraft_id=aircraft.id) }}" method="POST">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="pilot" class="block text-sm font-medium text-gray-700">Pilot</label>
+                        <input type="text" id="pilot" name="pilot" required class="mt-1 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50">
+                    </div>
+                    <div>
+                        <label for="copilot" class="block text-sm font-medium text-gray-700">Copilot</label>
+                        <input type="text" id="copilot" name="copilot" required class="mt-1 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50">
+                    </div>
+                    <div>
+                        <label for="departure_hour" class="block text-sm font-medium text-gray-700">Departure Hour</label>
+                        <input type="time" id="departure_hour" name="departure_hour" required class="mt-1 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50">
+                    </div>
+                    <div>
+                        <label for="arrival_hour" class="block text-sm font-medium text-gray-700">Arrival Hour</label>
+                        <input type="time" id="arrival_hour" name="arrival_hour" required class="mt-1 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50">
+                    </div>
+                    <div>
+                        <label for="total_flown_hours" class="block text-sm font-medium text-gray-700">Total Flown Hours</label>
+                        <input type="number" step="0.1" id="total_flown_hours" name="total_flown_hours" required class="mt-1 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50">
+                    </div>
+                    <div>
+                        <label for="departure_place" class="block text-sm font-medium text-gray-700">Departure Place</label>
+                        <input type="text" id="departure_place" name="departure_place" required class="mt-1 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50">
+                    </div>
+                    <div>
+                        <label for="flight_type" class="block text-sm font-medium text-gray-700">Flight Type</label>
+                        <input type="text" id="flight_type" name="flight_type" required class="mt-1 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50">
+                    </div>
+                    <div>
+                        <label for="observation" class="block text-sm font-medium text-gray-700">Observation</label>
+                        <input type="text" id="observation" name="observation" required class="mt-1 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50">
+                    </div>
+                </div>
+                <!-- Submit button -->
+                <div class="flex justify-end mt-6">
+                    <button type="button" onclick="resetForm()" class="mr-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded">Cancel</button>
+                    <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Save</button>
+                </div>
+            </form>
+            <!-- Delete button for aircraft -->
+            <form id="delete-aircraft-form" action="{{ url_for('delete_aircraft', aircraft_id=aircraft.id)}}" method="POST" class="mb-8">
+                <button type="button" onclick="confirmDelete()" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">Delete Aircraft</button>
+            </form>
+        </div>
+    </div>
+    
     <script>
         function confirmDelete() {
             if (confirm("Are you sure you want to delete this aircraft?")) {
                 document.getElementById('delete-aircraft-form').submit();
             }
         }
+
+        function resetForm() {
+            document.getElementById("flight-form").reset();
+        }
     </script>
-    <!-- Add Flight form -->
-    <h2>Add Flight</h2>
-    <form action="{{ url_for('add_flight', aircraft_id=aircraft.id) }}" method="POST">
-        <!-- Add flight fields -->
-        <label for="pilot">Pilot:</label><br>
-        <input type="text" id="pilot" name="pilot" required><br>
-        <label for="copilot">Copilot:</label><br>
-        <input type="text" id="copilot" name="copilot" required><br>
-        <label for="departure_hour">Departure Hour:</label><br>
-        <input type="time" id="departure_hour" name="departure_hour" required><br>
-        <label for="arrival_hour">Arrival Hour:</label><br>
-        <input type="time" id="arrival_hour" name="arrival_hour" required><br>
-        <label for="total_flown_hours">Total Flown Hours:</label><br>
-        <input type="number" step="0.1" id="total_flown_hours" name="total_flown_hours" required><br>
-        <label for="departure_place">Departure Place:</label><br>
-        <input type="text" id="departure_place" name="departure_place" required><br>
-        <label for="flight_type">Flight Type:</label><br>
-        <input type="text" id="flight_type" name="flight_type" required><br>
-        <label for="observation">Observation:</label><br>
-        <input type="text" id="observation" name="observation" required><br>
-        <!-- Submit button -->
-        <input type="submit" value="Submit">
-    </form>
     <!-- Flight History table -->
-    <h2>Flight History</h2>
-    <table>
-        <tr>
-            <th>Pilot</th>
-            <th>Copilot</th>
-            <th>Departure Hour</th>
-            <th>Arrival Hour</th>
-            <th>Total Flown Hours</th>
-            <th>Departure Place</th>
-            <th>Flight Type</th>
-            <th>Observation</th>
-            <th>Actions</th>
-        </tr>
-        {% for status in statuses %}
-        <tr>
-            <td>{{ status.pilot }}</td>
-            <td>{{ status.copilot }}</td>
-            <td>{{ status.departure_hour }}</td>
-            <td>{{ status.arrival_hour }}</td>
-            <td>{{ status.total_flown_hours }}</td>
-            <td>{{ status.departure_place }}</td>
-            <td>{{ status.flight_type }}</td>
-            <td>{{ status.observation }}</td>
-            <td>
-                <!-- Edit button -->
-                <a href="{{ url_for('edit_airplane_status', id=status.id) }}">
-                    <button>Edit</button>
-                </a>
-                <!-- Delete button for status -->
-                <form action="{{ url_for('delete_airplane_status', id=status.id) }}" method="POST" style="display:inline;">
-                    <button type="submit">Delete</button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    <h2 class="text-2xl font-semibold mt-10 mb-4">Flight History</h2>
+    <div class="px-4 sm:px-6 lg:px-8">
+        <div class="sm:flex sm:items-center">
+          <div class="sm:flex-auto">
+            <h1 class="text-base font-semibold leading-6 text-gray-900">Flight Statuses</h1>
+            <p class="mt-2 text-sm text-gray-700">A list of all flight statuses including pilot, copilot, departure hour, arrival hour, total flown hours, departure place, flight type, and observation.</p>
+          </div>
+        </div>
+        <div class="mt-8 flow-root">
+          <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+              <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-300">
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Pilot</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Copilot</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Departure Hour</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Arrival Hour</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Total Flown Hours</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Departure Place</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Flight Type</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Observation</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-200 bg-white">
+                    <!-- Replace this with dynamic data -->
+                    {% for status in statuses %}
+                    <tr>
+                      <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ status.pilot }}</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ status.copilot }}</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ status.departure_hour }}</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ status.arrival_hour }}</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ status.total_flown_hours }}</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ status.departure_place }}</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ status.flight_type }}</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ status.observation }}</td>
+                      <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                        <a href="{{ url_for('edit_airplane_status', id=status.id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                        <form action="{{ url_for('delete_airplane_status', id=status.id) }}" method="POST" style="display:inline;">
+                          <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Delete</button>
+                        </form>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                    <!-- End dynamic data -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
 </body>
 </html>
