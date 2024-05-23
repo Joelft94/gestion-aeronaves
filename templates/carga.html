@@ -4,6 +4,9 @@
     <title>Load Airplane Status</title>
 </head>
 <body>
+    <header>
+        <a href="{{url_for('logout')}}">Press here to logout</a>
+    </header>
     <h1>Load Airplane Status</h1>
     <form action="{{ url_for('create_airplane_status') }}" method="POST">
         <label for="pilot">Pilot:</label><br>

@@ -4,9 +4,12 @@
     <title>Aircrafts</title>
 </head>
 <body>
+    <header>
+        <a href="{{url_for('logout')}}">Press here to logout</a>
+    </header>
     <h1>Aircraft List</h1>
     <ul>
-        {% for aircraft in aircrafts %}
+        {% for aircraft in aircrafts %} 
             <li>
                 <a href="{{ url_for('view_aircraft', aircraft_id=aircraft.id) }}">{{ aircraft.name }}</a>
             </li>
@@ -15,3 +18,5 @@
     <a href="{{ url_for('add_aircraft') }}">Add New Aircraft</a>
 </body>
 </html>
+
+

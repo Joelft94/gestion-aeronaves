@@ -4,6 +4,9 @@
     <title>Add Aircraft</title>
 </head>
 <body>
+    <header>
+        <a href="{{url_for('logout')}}">Press here to logout</a>
+    </header>
     <h1>Add New Aircraft</h1>
     <form action="{{ url_for('add_aircraft') }}" method="POST">
         <label for="name">Aircraft Name:</label><br>

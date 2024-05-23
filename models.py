@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
 
 db = SQLAlchemy()
 
@@ -20,3 +21,9 @@ class Aircraft(db.Model):
     statuses = db.relationship('AirplaneStatus', backref='aircraft', lazy=True)
 
 
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(50), nullable=False, unique=True)
+    password = db.Column(db.String(80), nullable=False)
+    
+    
