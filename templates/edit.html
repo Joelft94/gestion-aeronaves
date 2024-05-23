@@ -1,31 +1,74 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <title>Editar</title>
-    </head>
-<body>
-    <h1>Edit Airplane Status</h1>
-    <form action="{{ url_for('edit_airplane_status', id=status.id) }}" method="POST">
-        <label for="pilot">Pilot:</label><br>
-        <input type="text" id="pilot" name="pilot" value="{{ status.pilot }}"><br>
-        <label for="copilot">Copilot:</label><br>
-        <input type="text" id="copilot" name="copilot" value="{{ status.copilot }}"><br>
-        <label for="departure_hour">Departure Hour:</label><br>
-        <input type="time" id="departure_hour" name="departure_hour" value="{{ status.departure_hour }}"><br>
-        <label for="arrival_hour">Arrival Hour:</label><br>
-        <input type="time" id="arrival_hour" name="arrival_hour" value="{{ status.arrival_hour }}"><br>
-        <label for="total_flown_hours">Total Flown Hours:</label><br>
-        <input type="number" step="0.1" id="total_flown_hours" name="total_flown_hours" value="{{ status.total_flown_hours }}"><br>
-        <label for="departure_place">Departure Place:</label><br>
-        <input type="text" id="departure_place" name="departure_place" value="{{ status.departure_place }}"><br>
-        <label for="flight_type">Flight Type:</label><br>
-        <input type="text" id="flight_type" name="flight_type" value="{{ status.flight_type }}"><br>
-        <label for="observation">Observation:</label><br>
-        <input type="text" id="observation" name="observation" value="{{ status.observation }}"><br>
-        <input type="submit" value="Update">
-    </form>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Airplane Status</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+        <div class="mx-auto w-1/2 grid-cols-1 gap-x-8 gap-y-8 pt-10 md:grid-cols-3">
+            <form action="{{ url_for('edit_airplane_status', id=status.id) }}" method="POST" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+                <div class="px-4 py-6 sm:p-8">
+                    <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                        <div class="sm:col-span-3">
+                            <label for="pilot" class="block text-sm font-medium leading-6 text-gray-900">Pilot</label>
+                            <div class="mt-2">
+                                <input type="text" id="pilot" name="pilot" value="{{ status.pilot }}" class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                        <!-- Include similar structure for other input fields -->
+                        <div class="sm:col-span-3">
+                            <label for="copilot" class="block text-sm font-medium leading-6 text-gray-900">Copilot</label>
+                            <div class="mt-2">
+                                <input type="text" id="copilot" name="copilot" value="{{ status.copilot }}" class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                        <div class="sm:col-span-3">
+                            <label for="departure_hour" class="block text-sm font-medium leading-6 text-gray-900">Departure Hour</label>
+                            <div class="mt-2">
+                                <input type="time" id="departure_hour" name="departure_hour" value="{{ status.departure_hour }}" class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                        <div class="sm:col-span-3">
+                            <label for="arrival_hour" class="block text-sm font-medium leading-6 text-gray-900">Arrival Hour</label>
+                            <div class="mt-2">
+                                <input type="time" id="arrival_hour" name="arrival_hour" value="{{ status.arrival_hour }}" class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                        <div class="sm:col-span-3">
+                            <label for="total_flown_hours" class="block text-sm font-medium leading-6 text-gray-900">Total Flown Hours</label>
+                            <div class="mt-2">
+                                <input type="number" step="0.1" id="total_flown_hours" name="total_flown_hours" value="{{ status.total_flown_hours }}" class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                        <div class="sm:col-span-3">
+                            <label for="departure_place" class="block text-sm font-medium leading-6 text-gray-900">Departure Place</label>
+                            <div class="mt-2">
+                                <input type="text" id="departure_place" name="departure_place" value="{{ status.departure_place }}" class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                        <div class="sm:col-span-3">
+                            <label for="flight_type" class="block text-sm font-medium leading-6 text-gray-900">Flight Type</label>
+                            <div class="mt-2">
+                                <input type="text" id="flight_type" name="flight_type" value="{{ status.flight_type }}" class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                        <div class="sm:col-span-3">
+                            <label for="observation" class="block text-sm font-medium leading-6 text-gray-900">Observation</label>
+                            <div class="mt-2">
+                                <input type="text" id="observation" name="observation" value="{{ status.observation }}" class="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
+                    <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Guardar</button>
+                </div>
+            </form>
+        </div>
+    
 </body>
 </html>
+

@@ -101,7 +101,7 @@ class LoginForm(FlaskForm):
 @login_required
 def index():
     aircrafts = Aircraft.query.all()
-    return render_template('index.html', aircrafts=aircrafts)
+    return render_template('index.html', aircrafts=aircrafts, selected_aircraft_id=None)
 
 
 # Ver Aeronaves
