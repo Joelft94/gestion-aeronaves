@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <title>Consultar</title>
-    </head>
-<body>
-    <h1>Consult Airplane Status</h1>
-    <table>
-        <tr>
-            <th>Pilot</th>
-            <th>Copilot</th>
-            <th>Departure Hour</th>
-            <th>Arrival Hour</th>
-            <th>Total Flown Hours</th>
-            <th>Departure Place</th>
-            <th>Flight Type</th>
-            <th>Observation</th>
-            <th>Aircraft</th>
-            <th>Actions</th>
-        </tr>
-        {% for status in statuses %}
-        <tr>
-            <td>{{ status.pilot }}</td>
-            <td>{{ status.copilot }}</td>
-            <td>{{ status.departure_hour }}</td>
-            <td>{{ status.arrival_hour }}</td>
-            <td>{{ status.total_flown_hours }}</td>
-            <td>{{ status.departure_place }}</td>
-            <td>{{ status.flight_type }}</td>
-            <td>{{ status.observation }}</td>
-            <td>{{ status.aircraft.name }}</td>
-            <td>
-                <a href="{{ url_for('edit_airplane_status', id=status.id) }}">
-                    <button>Edit</button>
-                </a>
-                <form action="{{ url_for('delete_airplane_status', id=status.id) }}" method="POST" style="display:inline;">
-                    <button type="submit">Delete</button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consult Airplane Status</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-10">
+        <h1 class="text-3xl font-bold mb-4">Consult Airplane Status</h1>
+        <div class="overflow-hidden shadow-md rounded-lg">
+            <table class="min-w-full divide-y divide-gray-300">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Pilot</th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Copilot</th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Departure Hour</th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Arrival Hour</th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Total Flown Hours</th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Departure Place</th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Flight Type</th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Observation</th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Aircraft</th>
+                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-300">
+                    {% for status in statuses %}
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ status.pilot }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ status.copilot }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ status.departure_hour }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ status.arrival_hour }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ status.total_flown_hours }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ status.departure_place }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ status.flight_type }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ status.observation }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ status.aircraft.name }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <a href="{{ url_for('edit_airplane_status', id=status.id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            <form action="{{ url_for('delete_airplane_status', id=status.id) }}" method="POST" style="display:inline;">
+                                <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
