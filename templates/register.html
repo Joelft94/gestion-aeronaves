@@ -14,9 +14,118 @@
     <title>Registro</title>
   </head>
   <body class="h-screen">
-    <div class="isolate bg-white px-6 py-24 sm:py-32 lg:px-8 h-full flex items-center justify-center">
+    <header>
+      <nav style="background-color: #538fca" class="h-20 pt-1">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div class="relative flex h-16 items-center justify-between">
+            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+              <!-- Mobile menu button-->
+            </div>
+            <div
+              class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+            >
+              <div class="flex flex-shrink-0 items-center">
+                <img
+                  class="pt-2 h-20 w-auto"
+                  src="../static/jack.svg"
+                  alt="Your Company"
+                />
+              </div>
+              <div class="hidden sm:ml-6 sm:block py-6">
+                <div class="flex space-x-4">
+                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+
+                  <a
+                    href="/"
+                    class="text-black hover:bg-gray-300 hover:text-white rounded-md px-3 py-2 text-lg font-medium"
+                    >Inicio</a
+                  >
+                  <a
+                    href="/add_aircraft"
+                    class="text-black hover:bg-gray-300 hover:text-white rounded-md px-3 py-2 text-lg font-medium"
+                    >Cargar Aeronave</a
+                  >
+                  <a
+                    href="/consulta"
+                    class="text-black hover:bg-gray-300 hover:text-white rounded-md px-3 py-2 text-lg font-medium"
+                    >Consulta</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto m:ml-6 sm:pr-0"
+            >
+              <!-- Profile dropdown -->
+              <div class="relative ml-3">
+                <div>
+                  <button
+                    type="button"
+                    class="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px- py-2 text-sm font-medium"
+                    id="user-menu-button"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    <!-- <span class="absolute -inset-1.5"></span>
+                      <span class="sr-only">Open user menu</span> -->
+                    <a
+                      href="/logout"
+                      class="bg-gray-700 text-white rounded-md px-3 py-2 text-lg font-medium"
+                      aria-current="page"
+                      >Logout</a
+                    >
+                  </button>
+                </div>
+
+                <!--
+                      Dropdown menu, show/hide based on menu state.
+          
+                      Entering: "transition ease-out duration-100"
+                        From: "transform opacity-0 scale-95"
+                        To: "transform opacity-100 scale-100"
+                      Leaving: "transition ease-in duration-75"
+                        From: "transform opacity-100 scale-100"
+                        To: "transform opacity-0 scale-95"
+                    -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden" id="mobile-menu">
+          <div class="space-y-1 px-2 pb-3 pt-4">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <a
+              href="/"
+              class="bg-gray-500 text-white block rounded-md px-3 py-2 text-base font-medium"
+              aria-current="page"
+              >Inicio</a
+            >
+            <a
+              href="/add_aircraft"
+              class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+              >Carga de Aeronave</a
+            >
+            <a
+              href="/consulta"
+              class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+              >Consulta</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section  style="
+    background-color: white;
+    background-image: url('../static/jack.svg');
+    background-repeat: no-repeat;
+    background-position: center; height: 100vh;
+    background-size: 500px;
+  ">
+    <div class="isolate px-6 py-24 sm:py-32 lg:px-8 h-full flex items-center justify-center">
+      
       <div class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]" aria-hidden="true">
-        <div class="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
       </div>
       <div class="mx-auto max-w-2xl text-center">
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Registrarse</h2>
@@ -39,10 +148,10 @@
           </div>
         </div>
         <div class="mt-10">
-          {{ form.submit(class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600") }}
+          {{ form.submit(class="block w-full rounded-md bg-gray-700 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600") }}
         </div>
         <div class="mt-10 text-center">
-          <a href="{{url_for('login')}}" class="text-sm leading-6 text-gray-600">Ya tiene una cuenta? <span class="font-semibold text-indigo-600 hover:text-indigo-500">Ingresar</span></a>
+          <a href="{{url_for('login')}}" class="text-sm leading-6 text-gray-600">Ya tiene una cuenta? <span class="font-semibold text-blue-500 hover:text-indigo-500">Ingresar</span></a>
         </div>
       </form>
     </div>
