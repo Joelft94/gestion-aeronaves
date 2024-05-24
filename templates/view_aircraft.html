@@ -18,7 +18,7 @@
                 <!-- Mobile menu button-->
                 <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
                   <span class="absolute -inset-0.5"></span>
-                  <span class="sr-only">Open main menu</span>
+                  <span class="sr-only">Abrir menu</span>
                   <!--
                     Icon when menu is closed.
         
@@ -95,7 +95,7 @@
         
   </header>
     <div class="container mx-auto py-10">
-      <h1 class="text-3xl font-bold mb-4">{{ aircraft.name }}</h1>
+      <h1 class="text-3xl text-center font-bold mb-4">{{ aircraft.name }}</h1>
 
       <!-- Add Flight form -->
       <div class="bg-white shadow-md rounded-md p-8">
@@ -108,63 +108,63 @@
           <div class="grid grid-cols-2 gap-4">
             <div>
               <label for="pilot" class="block text-sm font-medium text-gray-700"
-                >Pilot</label
+                >Piloto</label
               >
               <input
                 type="text"
                 id="pilot"
                 name="pilot"
                 required
-                class="mt-1 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
+                class="mt-1 pl-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
               />
             </div>
             <div>
               <label
                 for="copilot"
                 class="block text-sm font-medium text-gray-700"
-                >Copilot</label
+                >Copiloto</label
               >
               <input
                 type="text"
                 id="copilot"
                 name="copilot"
                 required
-                class="mt-1 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
+                class="mt-1 pl-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
               />
             </div>
             <div>
               <label
                 for="departure_hour"
                 class="block text-sm font-medium text-gray-700"
-                >Departure Hour</label
+                >Hora de Salida</label
               >
               <input
                 type="time"
                 id="departure_hour"
                 name="departure_hour"
                 required
-                class="mt-1 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
+                class="mt-1 pl-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
               />
             </div>
             <div>
               <label
                 for="arrival_hour"
                 class="block text-sm font-medium text-gray-700"
-                >Arrival Hour</label
+                >Hora de Llegada</label
               >
               <input
                 type="time"
                 id="arrival_hour"
                 name="arrival_hour"
                 required
-                class="mt-1 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
+                class="mt-1 pl-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
               />
             </div>
             <div>
               <label
                 for="total_flown_hours"
                 class="block text-sm font-medium text-gray-700"
-                >Total Flown Hours</label
+                >Horas Voladas</label
               >
               <input
                 type="number"
@@ -172,49 +172,49 @@
                 id="total_flown_hours"
                 name="total_flown_hours"
                 required
-                class="mt-1 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
+                class="mt-1 pl-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
               />
             </div>
             <div>
               <label
                 for="departure_place"
                 class="block text-sm font-medium text-gray-700"
-                >Departure Place</label
+                >Lugar de Despegue</label
               >
               <input
                 type="text"
                 id="departure_place"
                 name="departure_place"
                 required
-                class="mt-1 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
+                class="mt-1 pl-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
               />
             </div>
             <div>
               <label
                 for="flight_type"
                 class="block text-sm font-medium text-gray-700"
-                >Flight Type</label
+                >Tipo de Vuelo</label
               >
               <input
                 type="text"
                 id="flight_type"
                 name="flight_type"
                 required
-                class="mt-1 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
+                class="mt-1 pl-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
               />
             </div>
             <div>
               <label
                 for="observation"
                 class="block text-sm font-medium text-gray-700"
-                >Observation</label
+                >Observaciones</label
               >
               <input
                 type="text"
                 id="observation"
                 name="observation"
                 required
-                class="mt-1 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
+                class="mt-1 pl-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
               />
             </div>
           </div>
@@ -225,13 +225,13 @@
               onclick="resetForm()"
               class="mr-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded"
             >
-              Cancel
+              Cancelar
             </button>
             <button
               type="submit"
               class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
             >
-              Save
+              Guardar
             </button>
           </div>
         </form>
@@ -246,26 +246,16 @@
             onclick="confirmDelete()"
             class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded"
           >
-            Delete Aircraft
+            Eliminar Aeronave
           </button>
         </form>
       </div>
     </div>
-
-  
     <!-- Flight History table -->
-    <h2 class="text-2xl font-semibold mt-10 mb-4">Flight History</h2>
+    <h2 class="text-2xl text-center font-semibold mt-10 mb-4">Historial de Vuelos</h2>
     <div class="px-4 sm:px-6 lg:px-8">
       <div class="sm:flex sm:items-center">
         <div class="sm:flex-auto">
-          <h1 class="text-base font-semibold leading-6 text-gray-900">
-            Flight Statuses
-          </h1>
-          <p class="mt-2 text-sm text-gray-700">
-            A list of all flight statuses including pilot, copilot, departure
-            hour, arrival hour, total flown hours, departure place, flight type,
-            and observation.
-          </p>
         </div>
       </div>
       <div class="mt-8 flow-root">
@@ -283,55 +273,55 @@
                       scope="col"
                       class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
                     >
-                      Pilot
+                      Piloto
                     </th>
                     <th
                       scope="col"
                       class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Copilot
+                      Copiloto
                     </th>
                     <th
                       scope="col"
                       class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Departure Hour
+                      Hora de Salida
                     </th>
                     <th
                       scope="col"
                       class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Arrival Hour
+                      Hora de Llegada
                     </th>
                     <th
                       scope="col"
                       class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Total Flown Hours
+                      Horas Voladas
                     </th>
                     <th
                       scope="col"
                       class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Departure Place
+                      Lugar de Despegue
                     </th>
                     <th
                       scope="col"
                       class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Flight Type
+                      Tipo de Vuelo
                     </th>
                     <th
                       scope="col"
                       class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Observation
+                      Observaciones
                     </th>
                     <th
                       scope="col"
                       class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Actions
+                      Acciones
                     </th>
                   </tr>
                 </thead>
@@ -391,7 +381,7 @@
                         onclick="deleteRow('row-{{ status.id }}')"
                         class="text-red-600 hover:text-red-900 ml-2"
                       >
-                        Delete
+                        Eliminar
                       </button>
                     </td>
                   </tr>
