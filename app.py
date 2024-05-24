@@ -231,6 +231,8 @@ def delete_aircraft(aircraft_id):
         return jsonify({'error': str(e)}), 500
     
 
+    
+
 
 
 

@@ -11,61 +11,70 @@
   </head>
   <body class="bg-gray-100">
     <header>
-      <nav class="bg-gray-200">
-          <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div class="relative flex h-16 items-center justify-between">
-              <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                <!-- Mobile menu button-->
-                <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-                  <span class="absolute -inset-0.5"></span>
-                  <span class="sr-only">Abrir menu</span>
-                  <!--
-                    Icon when menu is closed.
-        
-                    Menu open: "hidden", Menu closed: "block"
-                  -->
-                  <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                  </svg>
-                  <!--
-                    Icon when menu is open.
-        
-                    Menu open: "block", Menu closed: "hidden"
-                  -->
-                  <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
+      <nav class="bg-gray-200 h-20">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div class="relative flex h-16 items-center justify-between">
+            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+              <!-- Mobile menu button-->
+           
+            </div>
+            <div
+              class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+            >
+              <div class="flex flex-shrink-0 items-center">
+                <img
+                  class="pt-2 h-20 w-auto"
+                  src="../static/jack.svg"
+                  alt="Your Company"
+                />
               </div>
-              <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div class="flex flex-shrink-0 items-center">
-                  <img class="h-8 w-auto" src="../static/jack.svg" alt="Your Company">
-                </div>
-                <div class="hidden sm:ml-6 sm:block">
-                  <div class="flex space-x-4">
-                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                   
-                    <a href="/" class="text-gray-500 hover:bg-gray-300 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Inicio</a>
-                    <a href="/add_aircraft" class="text-gray-500 hover:bg-gray-300 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Cargar Aeronave</a>
-                    <a href="/consulta" class="text-gray-500 hover:bg-gray-300 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Consulta</a>
-                  </div>
+              <div class="hidden sm:ml-6 sm:block py-6">
+                <div class="flex space-x-4">
+                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+
+                  <a
+                    href="/"
+                    class="text-gray-500 hover:bg-gray-300 hover:text-white rounded-md px-3 py-2 text-lg font-medium"
+                    >Inicio</a
+                  >
+                  <a
+                    href="/add_aircraft"
+                    class="text-gray-500 hover:bg-gray-300 hover:text-white rounded-md px-3 py-2 text-lg font-medium"
+                    >Cargar Aeronave</a
+                  >
+                  <a
+                    href="/consulta"
+                    class="text-gray-500 hover:bg-gray-300 hover:text-white rounded-md px-3 py-2 text-lg font-medium"
+                    >Consulta</a
+                  >
                 </div>
               </div>
-              <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              
-        
-                <!-- Profile dropdown -->
-                <div class="relative ml-3">
-                  <div>
-                    <button type="button" class="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px- py-2 text-sm font-medium" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                      <span class="absolute -inset-1.5"></span>
-                      <span class="sr-only">Open user menu</span>
-                      <a href="/logout" class="bg-gray-700 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Logout</a>
-  
-                    </button>
-                  </div>
-        
-                  <!--
+            </div>
+            <div
+              class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto m:ml-6 sm:pr-0"
+            >
+              <!-- Profile dropdown -->
+              <div class="relative ml-3">
+                <div>
+                  <button
+                    type="button"
+                    class="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px- py-2 text-sm font-medium"
+                    id="user-menu-button"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    <!-- <span class="absolute -inset-1.5"></span>
+                    <span class="sr-only">Open user menu</span> -->
+                    <a
+                      href="/logout"
+                      class="bg-gray-700 text-white rounded-md px-3 py-2 text-lg font-medium"
+                      aria-current="page"
+                      >Logout</a
+                    >
+                  </button>
+                </div>
+
+                <!--
                     Dropdown menu, show/hide based on menu state.
         
                     Entering: "transition ease-out duration-100"
@@ -75,27 +84,38 @@
                       From: "transform opacity-100 scale-100"
                       To: "transform opacity-0 scale-95"
                   -->
-                  
-                </div>
               </div>
             </div>
           </div>
-        
-          <!-- Mobile menu, show/hide based on menu state. -->
-          <div class="sm:hidden" id="mobile-menu">
-            <div class="space-y-1 px-2 pb-3 pt-2">
-              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
-            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden" id="mobile-menu">
+          <div class="space-y-1 px-2 pb-3 pt-4">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <a
+              href="/"
+              class="bg-gray-500 text-white block rounded-md px-3 py-2 text-base font-medium"
+              aria-current="page"
+              >Inicio</a
+            >
+            <a
+              href="/add_aircraft"
+              class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+              >Carga de Aeronave</a
+            >
+            <a
+              href="/consulta"
+              class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+              >Consulta</a
+            >
           </div>
-        </nav>
-        
-  </header>
-    <div class="container mx-auto py-10">
-      <h1 class="text-3xl text-center font-bold mb-4">{{ aircraft.name }}</h1>
+        </div>
+      </nav>
+    </header>
+    <div class="container mx-auto w-3/4 py-10">
+      <h1 class="text-3xl text-left mb-4 font-bold">Aeronave: </h1>
+      <h2 class="text-3xl text-left mb-4">{{ aircraft.name }}</h2>
 
       <!-- Add Flight form -->
       <div class="bg-white shadow-md rounded-md p-8">
@@ -115,7 +135,7 @@
                 id="pilot"
                 name="pilot"
                 required
-                class="mt-1 pl-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
+                class="mt-1 p-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
               />
             </div>
             <div>
@@ -129,7 +149,7 @@
                 id="copilot"
                 name="copilot"
                 required
-                class="mt-1 pl-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
+                class="mt-1 p-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
               />
             </div>
             <div>
@@ -143,7 +163,7 @@
                 id="departure_hour"
                 name="departure_hour"
                 required
-                class="mt-1 pl-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
+                class="mt-1 p-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
               />
             </div>
             <div>
@@ -157,7 +177,7 @@
                 id="arrival_hour"
                 name="arrival_hour"
                 required
-                class="mt-1 pl-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
+                class="mt-1 p-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
               />
             </div>
             <div>
@@ -172,7 +192,7 @@
                 id="total_flown_hours"
                 name="total_flown_hours"
                 required
-                class="mt-1 pl-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
+                class="mt-1 p-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
               />
             </div>
             <div>
@@ -186,7 +206,7 @@
                 id="departure_place"
                 name="departure_place"
                 required
-                class="mt-1 pl-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
+                class="mt-1 p-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
               />
             </div>
             <div>
@@ -200,7 +220,7 @@
                 id="flight_type"
                 name="flight_type"
                 required
-                class="mt-1 pl-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
+                class="mt-1 p-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
               />
             </div>
             <div>
@@ -214,25 +234,37 @@
                 id="observation"
                 name="observation"
                 required
-                class="mt-1 pl-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
+                class="mt-1 p-2 block w-full border border-gray-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50"
               />
             </div>
           </div>
           <!-- Submit button -->
-          <div class="flex justify-end mt-6">
-            <button
-              type="button"
-              onclick="resetForm()"
-              class="mr-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded"
-            >
-              Cancelar
-            </button>
-            <button
-              type="submit"
-              class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
-            >
-              Guardar
-            </button>
+          <div class="flex justify-between mt-6">
+            <div>
+              <button
+                type="button"
+                onclick="confirmDelete()"
+                class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded"
+              >
+                Eliminar Aeronave
+              </button>
+            </div>
+
+            <div class="flex">
+              <button
+                type="button"
+                onclick="resetForm()"
+                class="mr-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded"
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
+              >
+                Guardar
+              </button>
+            </div>
           </div>
         </form>
         <form
@@ -240,25 +272,18 @@
           action="{{ url_for('delete_aircraft', aircraft_id=aircraft.id)}}"
           method="POST"
           class="mb-8"
-        >
-          <button
-            type="button"
-            onclick="confirmDelete()"
-            class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Eliminar Aeronave
-          </button>
-        </form>
+        ></form>
       </div>
     </div>
     <!-- Flight History table -->
-    <h2 class="text-2xl text-center font-semibold mt-10 mb-4">Historial de Vuelos</h2>
+    <h2 class="text-2xl text-center font-semibold mt-10 mb-4">
+      Historial de Vuelos
+    </h2>
     <div class="px-4 sm:px-6 lg:px-8">
       <div class="sm:flex sm:items-center">
-        <div class="sm:flex-auto">
-        </div>
+        <div class="sm:flex-auto"></div>
       </div>
-      <div class="mt-8 flow-root">
+      <div class="mt-8 w-3/4 mx-auto">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div
             class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8"
@@ -266,7 +291,7 @@
             <div
               class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg"
             >
-              <table class="min-w-full divide-y divide-gray-300">
+              <table class="min-w-full divide-y divide-gray-300 text-center">
                 <thead class="bg-gray-50">
                   <tr>
                     <th
@@ -321,11 +346,11 @@
                       scope="col"
                       class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Acciones
+                      Editar/Eliminar
                     </th>
                   </tr>
                 </thead>
-                <tbody class="divide-y divide-gray-200 bg-white">
+                <tbody class="divide-y divide-gray-200 bg-white text-center">
                   <!-- Replace this with dynamic data -->
                   {% for status in statuses %}
                   <tr id="row-{{ status.id }}">
@@ -370,12 +395,12 @@
                       {{ status.observation }}
                     </td>
                     <td
-                      class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
+                      class="relative flex justify-between whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
                     >
                       <a
                         href="{{ url_for('edit_airplane_status', id=status.id) }}"
                         class="text-indigo-600 hover:text-indigo-900"
-                        >Edit</a
+                        >Editar</a
                       >
                       <button
                         onclick="deleteRow('row-{{ status.id }}')"
@@ -394,7 +419,6 @@
         </div>
       </div>
     </div>
-    
   </body>
   <script>
     // Function to confirm delete action
