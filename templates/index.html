@@ -9,16 +9,123 @@
         .hidden { display: none; }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen bg-gray-100">
+<body class="flex flex-col justify-between min-h-screen bg-gray-100" style="
+background-color: white;
+background-image: url('../static/jack.svg');
+background-repeat: no-repeat;
+background-position: center; height: 100vh;
+background-size: 500px;
+background-attachment: fixed;
+">
+    <header>
+        <nav style="background-color: #538fca" class="h-20 pt-1">
+          <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+              <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <!-- Mobile menu button-->
+              </div>
+              <div
+                class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+              >
+                <div class="flex flex-shrink-0 items-center">
+                  <img
+                    class="pt-2 h-20 w-auto"
+                    src="../static/jack.svg"
+                    alt="Your Company"
+                  />
+                </div>
+                <div class="hidden sm:ml-6 sm:block py-6">
+                  <div class="flex space-x-4">
+                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+  
+                    <a
+                      href="/"
+                      class="text-black hover:bg-gray-300 hover:text-white rounded-md px-3 py-2 text-lg font-medium"
+                      >Inicio</a
+                    >
+                    <a
+                      href="/add_aircraft"
+                      class="text-black hover:bg-gray-300 hover:text-white rounded-md px-3 py-2 text-lg font-medium"
+                      >Cargar Aeronave</a
+                    >
+                    <a
+                      href="/consulta"
+                      class="text-black hover:bg-gray-300 hover:text-white rounded-md px-3 py-2 text-lg font-medium"
+                      >Consulta</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto m:ml-6 sm:pr-0"
+              >
+                <!-- Profile dropdown -->
+                <div class="relative ml-3">
+                  <div>
+                    <button
+                      type="button"
+                      class="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px- py-2 text-sm font-medium"
+                      id="user-menu-button"
+                      aria-expanded="false"
+                      aria-haspopup="true"
+                    >
+                      <!-- <span class="absolute -inset-1.5"></span>
+                        <span class="sr-only">Open user menu</span> -->
+                      <a
+                        href="/logout"
+                        class="bg-gray-700 text-white rounded-md px-3 py-2 text-lg font-medium"
+                        aria-current="page"
+                        >Logout</a
+                      >
+                    </button>
+                  </div>
+  
+                  <!--
+                        Dropdown menu, show/hide based on menu state.
+            
+                        Entering: "transition ease-out duration-100"
+                          From: "transform opacity-0 scale-95"
+                          To: "transform opacity-100 scale-100"
+                        Leaving: "transition ease-in duration-75"
+                          From: "transform opacity-100 scale-100"
+                          To: "transform opacity-0 scale-95"
+                      -->
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Mobile menu, show/hide based on menu state. -->
+          <div class="sm:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pb-3 pt-4">
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              <a
+                href="/"
+                class="bg-gray-500 text-white block rounded-md px-3 py-2 text-base font-medium"
+                aria-current="page"
+                >Inicio</a
+              >
+              <a
+                href="/add_aircraft"
+                class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                >Carga de Aeronave</a
+              >
+              <a
+                href="/consulta"
+                class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                >Consulta</a
+              >
+            </div>
+          </div>
+        </nav>
+      </header>  
     
-    <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
-        <header class="mb-4 text-center">
-            <a href="{{ url_for('logout') }}" class="text-indigo-600 hover:text-indigo-900">Press here to logout</a>
-        </header>
-        <h1 class="text-2xl font-semibold mb-4 text-center">Aircraft List</h1>
+    <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md mx-auto">
+        
+        <h1 class="text-2xl font-semibold mb-4 text-center">Lista de Aeronaves</h1>
         
         <div>
-            <label for="combobox" class="block text-sm font-medium leading-6 text-gray-900">Select Aircraft</label>
+            <label for="combobox" class="block text-sm font-medium leading-6 text-gray-900">Seleccionar Aeronave</label>
             <div class="relative mt-2">
                 <input id="combobox" type="text" class="w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" role="combobox" aria-controls="options" aria-expanded="false">
                 <button type="button" id="dropdown-toggle" class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
@@ -37,11 +144,11 @@
         </div>
 
         <div class="mt-4 space-x-2 text-center">
-            <button type="button" id="view-aircraft-btn" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">View Aircraft Info</button>
-            <button type="button" onclick="window.location.href='{{ url_for('add_aircraft') }}'" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add New Aircraft</button>
+            <button type="button" id="view-aircraft-btn" class="rounded-md bg-gray-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">View Aircraft Info</button>
+            <button type="button" onclick="window.location.href='{{ url_for('add_aircraft') }}'" class="rounded-md bg-gray-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add New Aircraft</button>
         </div>
     </div>
-
+<div></div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const combobox = document.getElementById('combobox');

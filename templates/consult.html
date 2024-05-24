@@ -1,86 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Consulta</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100">
-    
-    <div class="container mx-auto py-10">
-        <h1 class="text-3xl font-bold mb-4">Consulta del estado de la Aeronave</h1>
-        <div class="overflow-hidden shadow-md rounded-lg">
-            <table class="min-w-full divide-y divide-gray-300">
-                <thead class="bg-gray-50">
-                    <tr>
-                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Piloto</th>
-                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Copiloto</th>
-                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Hora de Salida</th>
-                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Hora de Llegada</th>
-                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Horas voladas</th>
-                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Lugar de despegue</th>
-                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Tipo de vuelo</th>
-                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Observaciones</th>
-                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Aeronave</th>
-                        <th scope="col" class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Editar/Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-300">
-                    {% for status in statuses %}
-                    <tr id="row-{{ status.id }}">
-                        <td class="px-6 py-4 whitespace-nowrap">{{ status.pilot }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ status.copilot }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ status.departure_hour }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ status.arrival_hour }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ status.total_flown_hours }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ status.departure_place }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ status.flight_type }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ status.observation }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ status.aircraft.name }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="{{ url_for('edit_airplane_status', id=status.id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            <form id="form-{{ status.id }}" action="{{ url_for('delete_airplane_status', id=status.id) }}" method="POST" style="display:inline;">
-                                <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../static/styles/styles.css" />
+  </head>
+  <body
+   
+    class="bg-gray-100"
+  >
+    <header>
+      <nav style="background-color: #538fca" class="h-20 pt-1">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div class="relative flex h-16 items-center justify-between">
+            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+              <!-- Mobile menu button-->
+            </div>
+            <div
+              class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+            >
+              <div class="flex flex-shrink-0 items-center">
+                <img
+                  class="pt-2 h-20 w-auto"
+                  src="../static/jack.svg"
+                  alt="Your Company"
+                />
+              </div>
+              <div class="hidden sm:ml-6 sm:block py-6">
+                <div class="flex space-x-4">
+                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+
+                  <a
+                    href="/"
+                    class="text-black hover:bg-gray-300 hover:text-white rounded-md px-3 py-2 text-lg font-medium"
+                    >Inicio</a
+                  >
+                  <a
+                    href="/add_aircraft"
+                    class="text-black hover:bg-gray-300 hover:text-white rounded-md px-3 py-2 text-lg font-medium"
+                    >Cargar Aeronave</a
+                  >
+                  <a
+                    href="/consulta"
+                    class="text-black hover:bg-gray-300 hover:text-white rounded-md px-3 py-2 text-lg font-medium"
+                    >Consulta</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto m:ml-6 sm:pr-0"
+            >
+              <!-- Profile dropdown -->
+              <div class="relative ml-3">
+                <div>
+                  <button
+                    type="button"
+                    class="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px- py-2 text-sm font-medium"
+                    id="user-menu-button"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    <!-- <span class="absolute -inset-1.5"></span>
+                      <span class="sr-only">Open user menu</span> -->
+                    <a
+                      href="/logout"
+                      class="bg-gray-700 text-white rounded-md px-3 py-2 text-lg font-medium"
+                      aria-current="page"
+                      >Logout</a
+                    >
+                  </button>
+                </div>
+
+                <!--
+                      Dropdown menu, show/hide based on menu state.
+          
+                      Entering: "transition ease-out duration-100"
+                        From: "transform opacity-0 scale-95"
+                        To: "transform opacity-100 scale-100"
+                      Leaving: "transition ease-in duration-75"
+                        From: "transform opacity-100 scale-100"
+                        To: "transform opacity-0 scale-95"
+                    -->
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden" id="mobile-menu">
+          <div class="space-y-1 px-2 pb-3 pt-4">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <a
+              href="/"
+              class="bg-gray-500 text-white block rounded-md px-3 py-2 text-base font-medium"
+              aria-current="page"
+              >Inicio</a
+            >
+            <a
+              href="/add_aircraft"
+              class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+              >Carga de Aeronave</a
+            >
+            <a
+              href="/consulta"
+              class="text-gray-500 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+              >Consulta</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section  style="
+    background-color: white;
+    background-image: url('../static/jack.svg');
+    background-repeat: no-repeat;
+    background-position: center; height: 100vh;
+    background-size: 500px;
+    background-attachment: fixed;
+  ">
+      <div class="container mx-auto py-10 w-3/4">
+        <h1 class="text-3xl text-center font-bold mb-4">
+          Consulta del estado de la Aeronave
+        </h1>
+        <div class="overflow-hidden shadow-md rounded-lg">
+          <table class="min-w-full divide-y divide-gray-300">
+            <thead style="background-color: #538fca">
+              <tr>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider"
+                >
+                  Piloto
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider"
+                >
+                  Copiloto
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider"
+                >
+                  Hora de Salida
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider"
+                >
+                  Hora de Llegada
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider"
+                >
+                  Horas voladas
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider"
+                >
+                  Lugar de despegue
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider"
+                >
+                  Tipo de vuelo
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider"
+                >
+                  Observaciones
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider"
+                >
+                  Aeronave
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left text-sm font-medium text-black uppercase tracking-wider"
+                >
+                  Editar/Eliminar
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y text-center divide-gray-300 bg-white">
+              {% for status in statuses %}
+              <tr id="row-{{ status.id }}">
+                <td class="px-6 py-4 whitespace-nowrap">{{ status.pilot }}</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  {{ status.copilot }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  {{ status.departure_hour }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  {{ status.arrival_hour }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  {{ status.total_flown_hours }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  {{ status.departure_place }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  {{ status.flight_type }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  {{ status.observation }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  {{ status.aircraft.name }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <a
+                    href="{{ url_for('edit_airplane_status', id=status.id) }}"
+                    class="text-indigo-600 hover:text-indigo-900"
+                    >Edit</a
+                  >
+                  <form
+                    id="form-{{ status.id }}"
+                    action="{{ url_for('delete_airplane_status', id=status.id) }}"
+                    method="POST"
+                    style="display: inline"
+                  >
+                    <button
+                      type="submit"
+                      class="text-red-600 hover:text-red-900 ml-2"
+                    >
+                      Eliminar
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
 
     <script>
-        // Function to set the hidden rows in local storage
-        function setHiddenRows(hiddenRows) {
-            localStorage.setItem('hiddenRows', JSON.stringify(hiddenRows));
-        }
+      // Function to set the hidden rows in local storage
+      function setHiddenRows(hiddenRows) {
+        localStorage.setItem("hiddenRows", JSON.stringify(hiddenRows));
+      }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load hidden rows from local storage
-            const hiddenRows = JSON.parse(localStorage.getItem('hiddenRows')) || [];
-            hiddenRows.forEach(rowId => {
-                const row = document.getElementById(rowId);
-                if (row) {
-                    row.style.display = 'none';
-                }
-            });
-
-            document.querySelectorAll('form').forEach(form => {
-                form.addEventListener('submit', function(event) {
-                    event.preventDefault(); // Prevent the default form submission
-
-                    const rowId = form.id.replace('form-', 'row-'); // Get the row ID
-                    const row = document.getElementById(rowId);
-                    if (row) {
-                        row.style.display = 'none'; // Hide the row
-                        hiddenRows.push(rowId); // Add the row ID to the hidden rows array
-                        setHiddenRows(hiddenRows); // Save to local storage
-                    }
-                });
-            });
+      document.addEventListener("DOMContentLoaded", function () {
+        // Load hidden rows from local storage
+        const hiddenRows = JSON.parse(localStorage.getItem("hiddenRows")) || [];
+        hiddenRows.forEach((rowId) => {
+          const row = document.getElementById(rowId);
+          if (row) {
+            row.style.display = "none";
+          }
         });
+
+        document.querySelectorAll("form").forEach((form) => {
+          form.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const rowId = form.id.replace("form-", "row-"); // Get the row ID
+            const row = document.getElementById(rowId);
+            if (row) {
+              row.style.display = "none"; // Hide the row
+              hiddenRows.push(rowId); // Add the row ID to the hidden rows array
+              setHiddenRows(hiddenRows); // Save to local storage
+            }
+          });
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
